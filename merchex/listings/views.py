@@ -3,13 +3,20 @@ from django.shortcuts import render
 from listings.models import Band
 from listings.models import Listing
 
-def hello(request):
+def band_list(request):
     bands = Band.objects.all()
-    listings = Listing.objects.all()
     return render(
         request,
-        'listings/hello.html',
+        'listings/band_list.html',
         {'bands': bands}
+        )
+
+def band_detail(request, band_id):
+    band = Band.objects.get(id=band_id)
+    return render(
+        request,
+        'listings/band_detail.html',
+        {'band': band} 
         )
 
 def about(request):
@@ -24,10 +31,18 @@ def contact(request):
         'listings/contact.html',
     )
 
-def listings(request):
+def listing_list(request):
     listings = Listing.objects.all()
     return render(
         request,
-        'listings/listings.html',
+        'listings/listing_list.html',
         {'listings': listings}
     )
+
+def listing_detail(request, listing_id):
+    listing = Listing.objects.get(id=listing_id)
+    return render(
+        request,
+        'listings/listing_detail.html',
+        {'listing': listing} 
+        )

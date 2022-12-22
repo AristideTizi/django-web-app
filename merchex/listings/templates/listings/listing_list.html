@@ -5,7 +5,7 @@
     <h1>Listings</h1> <p>Les differents listings sont !</p>
     <ol>
         {% for listing in listings %}
-        <li>{{ listing.title }}</li>
+        <li><a href="{% url 'listing-detail' listing.id %}">{{ listing.title }}</a></li>
         {% endfor %}
     </ol>
 
